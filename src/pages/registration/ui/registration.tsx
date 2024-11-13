@@ -2,22 +2,17 @@ import { useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import styles from './registration.module.scss';
 import { Button, Input } from '../../../shared';
+import { useNavigate } from 'react-router-dom';
 export const Registration = () => {
   const [emailValue, setEmailValue] = useState('');
-  const [value, setValue] = useLocalStorage<{ users: { email: string }[] }>(
-    'test-key',
-    {
-      users: [],
-    },
-  );
+  const navigate = useNavigate();
+  const [value,setValue] = useLocalStorage<{ email: string }>('user', { email: '' });
 
- const handleEmail = () => {
-   const existingEmail = value.users.find((user) => user.email === emailValue);
-   if (!existingEmail) {
-     setValue({ users: [...value.users, { email: emailValue }] });
-   }
-   console.log(value);
- };
+  const handleEmail = () => {
+    setValue({ email: emailValue });
+
+    navigate('/project');
+  };
   return (
     <div className={styles.registration}>
       <h1>Войти в приложение</h1>

@@ -6,6 +6,10 @@ interface IInputProps {
   maxLength?: number;
   className?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  defaultValue?: string;
+  ref?: React.Ref<HTMLInputElement>;
+  autoFocus?: boolean;
+  onClick?: React.MouseEventHandler;
 }
 
 export const Input = ({
@@ -16,7 +20,10 @@ export const Input = ({
   maxLength,
   className,
   onChange,
-
+  defaultValue,
+ ref,
+  autoFocus,
+  onClick,
 }: IInputProps) => {
   return (
     <>
@@ -28,6 +35,10 @@ export const Input = ({
         minLength={minLength}
         className={className}
         onChange={onChange}
+        defaultValue={defaultValue}
+        ref={ref}
+        autoFocus={autoFocus}
+        onClick={onClick}
       />
     </>
   );
