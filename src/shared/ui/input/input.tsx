@@ -1,5 +1,5 @@
 interface IInputProps {
-  type: 'email' | 'text';
+  type: 'email' | 'text' | 'checkbox';
   placeholder?: string;
   newValue?: string;
   minLength?: number;
@@ -10,6 +10,7 @@ interface IInputProps {
   ref?: React.Ref<HTMLInputElement>;
   autoFocus?: boolean;
   onClick?: React.MouseEventHandler;
+  checked?: boolean;
 }
 
 export const Input = ({
@@ -21,7 +22,8 @@ export const Input = ({
   className,
   onChange,
   defaultValue,
- ref,
+  ref,
+  checked,
   autoFocus,
   onClick,
 }: IInputProps) => {
@@ -39,6 +41,7 @@ export const Input = ({
         ref={ref}
         autoFocus={autoFocus}
         onClick={onClick}
+        checked={checked}
       />
     </>
   );

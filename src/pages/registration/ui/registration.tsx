@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export const Registration = () => {
   const [emailValue, setEmailValue] = useState('');
   const navigate = useNavigate();
-  const [value,setValue] = useLocalStorage<{ email: string }>('user', { email: '' });
+  const [value, setValue] = useLocalStorage<{ email: string }>('user', { email: '' });
 
   const handleEmail = () => {
     setValue({ email: emailValue });
