@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import { Button, Input } from '../../../shared';
 import style from './project.module.scss';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { SquarePen, Check, Trash2 } from 'lucide-react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { v4 as uuidv4 } from 'uuid';
@@ -31,7 +31,7 @@ export const Project = () => {
   const [addProject, setAddProject] = useState(false);
   const [editingProject, setEditingProject] = useState<string | null>(null);
   const [newProjectName, setNewProjectName] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
+ 
 
   const handleProject = () => {
     const newProject = {
@@ -98,7 +98,7 @@ export const Project = () => {
         .map((item) => (
           <div className={style.container__content} key={item.id} onClick={() => navigate(`/tasks/${item.id}`)}>
             {editingProject === item.id ? (
-              <Input type="text" defaultValue={item.projectName} onChange={(e) => setNewProjectName(e.target.value)} onClick={(e) => e.stopPropagation()} ref={inputRef} autoFocus />
+              <Input type="text" defaultValue={item.projectName} onChange={(e) => setNewProjectName(e.target.value)} onClick={(e) => e.stopPropagation()} autoFocus />
             ) : (
               <h2>{item.projectName}</h2>
             )}

@@ -1,50 +1,24 @@
-# React + TypeScript + Vite
+это test-проект! Создан для  демонстрации навыков
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+демо: 
 
-## Expanding the ESLint configuration
+Стек технологий (будет пополняться):
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+React
+TypeScript
+JavaScript
+SASS 
+usehooks-ts(для работы с localStorage)
+uuid(для генерации id)
+react-router-dom(роутинг)
+lucide-react(icons)
+formkit/auto-animate(для плавной анимации)
 
-- Configure the top-level `parserOptions` property like this:
+Для запуска проекта:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Клонировать репозиторий: git clone
+перейти в папку проекта: cd react-reon
+установить зависимости: npm install
+Запустить проект: npm run dev
