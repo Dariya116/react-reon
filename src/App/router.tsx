@@ -7,7 +7,7 @@ export const AppRouter = () => (
   <Routes>
     <Route element={<Registration />} path="/registration" />
     <Route element={<ProtectedRoute isAllowed={useLocalStorage('user', { email: '' })[0].email} />}>
-      <Route element={<Project />} path="/project" />
+      <Route element={<Project />} path="/" />
       <Route element={<Tasks />} path="/tasks/:id" />
       <Route element={<Profile />} path="/profile" />
     </Route>
