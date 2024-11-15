@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
+import { useNavigate } from 'react-router-dom';
 import styles from './registration.module.scss';
 import { Button, Input } from '../../../shared';
-import { useNavigate } from 'react-router-dom';
 export const Registration = () => {
   const [emailValue, setEmailValue] = useState('');
   const navigate = useNavigate();

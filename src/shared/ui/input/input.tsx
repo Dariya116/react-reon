@@ -7,7 +7,6 @@ interface IInputProps {
   className?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   defaultValue?: string;
-  // ref?: React.Ref<HTMLInputElement>;
   autoFocus?: boolean;
   onClick?: React.MouseEventHandler;
   checked?: boolean;
@@ -22,7 +21,6 @@ export const Input = ({
   className,
   onChange,
   defaultValue,
-  // ref,
   checked,
   autoFocus,
   onClick,
@@ -38,7 +36,6 @@ export const Input = ({
         className={className}
         onChange={onChange}
         defaultValue={defaultValue}
-        // ref={ref}
         autoFocus={autoFocus}
         onClick={onClick}
         checked={checked}

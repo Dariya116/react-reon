@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
-import { Button, Input } from '../../../shared';
-import style from './project.module.scss';
 import { useState } from 'react';
 import { SquarePen, Check, Trash2 } from 'lucide-react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { v4 as uuidv4 } from 'uuid';
+import { Button, Input } from '../../../shared';
+import style from './project.module.scss';
 
 export interface ProjectType {
   id: string;
