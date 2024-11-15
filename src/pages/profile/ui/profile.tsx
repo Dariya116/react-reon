@@ -16,7 +16,7 @@ export const Profile = () => {
       <p>Всего проектов: {project.projects.filter((item) => item.userName === value.email).length}</p>
       <div className={style.profile__buttons}>
         <LogoutButton />
-        <Button type="button" text={'На главную'} onClick={() => navigate('/project')} />
+        <Button type="button" text={'На главную'} onClick={() => navigate('/')} />
       </div>
     </div>
   );

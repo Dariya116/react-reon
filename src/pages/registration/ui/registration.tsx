@@ -11,7 +11,7 @@ export const Registration = () => {
   const handleEmail = () => {
     setValue({ email: emailValue });
 
-    navigate('/project');
+    navigate('/');
   };
   return (
     <div className={styles.registration}>
