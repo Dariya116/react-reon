@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export const Registration = () => {
   const [emailValue, setEmailValue] = useState('');
   const navigate = useNavigate();
-  const [value, setValue] = useLocalStorage<{ email: string }>('user', { email: '' });
+  const [, setValue] = useLocalStorage<{ email: string }>('user', { email: '' });
 
   const handleEmail = () => {
     setValue({ email: emailValue });
@@ -17,19 +17,8 @@ export const Registration = () => {
     <div className={styles.registration}>
       <h1>Войти в приложение</h1>
 
-      <Input
-        onChange={(e) => setEmailValue(e.target.value)}
-        placeholder="email"
-        type="text"
-        newValue={emailValue}
-        className={styles.registration__input}
-      />
-      <Button
-        text="Далее"
-        onClick={handleEmail}
-        disabled={!emailValue.match(/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)}
-        className={styles.registration__button}
-      />
+      <Input onChange={(e) => setEmailValue(e.target.value)} placeholder="email" type="text" newValue={emailValue} className={styles.registration__input} />
+      <Button text="Далее" onClick={handleEmail} disabled={!emailValue.match(/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)} className={styles.registration__button} />
     </div>
   );
 };

@@ -14,7 +14,6 @@ html {
 *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  font-family: var(--font-nunito), sans-serif;
   box-sizing: border-box;
 }
 
@@ -53,5 +52,8 @@ ol {
   list-style: none;
 }
 
-
-
+input {
+  &:focus {
+    outline: none;
+  }
+}

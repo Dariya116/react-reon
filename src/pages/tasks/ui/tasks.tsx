@@ -4,6 +4,9 @@ import { Button, Input } from '../../../shared';
 import { useEffect, useRef, useState } from 'react';
 import { Check, SquarePen, Trash2 } from 'lucide-react';
 import { ProjectType } from '../../project/ui/project';
+import style from './tasks.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+
 export const Tasks = () => {
   const { id } = useParams();
   const [projectTask, setProjectTask] = useState('');
@@ -14,10 +17,10 @@ export const Tasks = () => {
   const [project, setProject] = useLocalStorage<{ projects: ProjectType[] }>('project', { projects: [] });
 
   const handleSave = () => {
-    const selectedProject = project.projects.find((item) => item.id === Number(id));
+    const selectedProject = project.projects.find((item) => item.id === id);
     if (selectedProject) {
       const newTask = {
-        id: Math.random(),
+        id: uuidv4(),
         createDateTask: new Date(),
         textTask: projectTask,
         checked: false,
@@ -40,7 +43,7 @@ export const Tasks = () => {
     }
   };
   useEffect(() => {
-    setShowTask(project.projects.find((item) => item.id === Number(id))?.tasks);
+    setShowTask(project.projects.find((item) => item.id === id)?.tasks);
   }, [projectTask, project, id]);
 
   const handleEditTask = (task: ProjectType['tasks']) => {
@@ -48,8 +51,8 @@ export const Tasks = () => {
     setEditedTaskText(task.textTask);
   };
 
-  const removeTask = (taskId: number) => {
-    const selectedProject = project.projects.find((item) => item.id === Number(id));
+  const removeTask = (taskId: string) => {
+    const selectedProject = project.projects.find((item) => item.id === id);
     if (selectedProject) {
       selectedProject.tasks = selectedProject.tasks.filter((task) => task.id !== taskId);
       setProject((prevProject) => ({
@@ -68,7 +71,7 @@ export const Tasks = () => {
   };
 
   const handleSaveEditedTask = () => {
-    const selectedProject = project.projects.find((item) => item.id === Number(id));
+    const selectedProject = project.projects.find((item) => item.id === id);
     if (selectedProject) {
       const taskIndex = selectedProject.tasks.findIndex((task) => task.id === editingTask.id);
       if (taskIndex !== -1) {
@@ -90,8 +93,8 @@ export const Tasks = () => {
     setEditingTask(null);
   };
 
-  const handleToggleChecked = (taskId: number) => {
-    const selectedProject = project.projects.find((item) => item.id === Number(id));
+  const handleToggleChecked = (taskId: string) => {
+    const selectedProject = project.projects.find((item) => item.id === id);
     if (selectedProject) {
       const taskIndex = selectedProject.tasks.findIndex((task) => task.id === taskId);
       if (taskIndex !== -1) {
@@ -113,27 +116,28 @@ export const Tasks = () => {
   };
 
   return (
-    <div>
-      {project.projects.find((item) => item.id === Number(id))?.projectName}
-      <Input type={'text'} placeholder="Введите задачу" newValue={projectTask} onChange={(e) => setProjectTask(e.target.value)} />
+    <div className={style.tasks}>
+      <h1>{project.projects.find((item) => item.id === id)?.projectName}</h1>
+      <Input className={style.tasks__input} type={'text'} placeholder="Введите задачу" newValue={projectTask} onChange={(e) => setProjectTask(e.target.value)} />
       <Button text={'сохранить'} onClick={handleSave} />
-      <div>
+
+      <div className={style.tasks__container}>
         {showTask &&
           showTask.map((item, index) => (
-            <div key={index}>
-              <Input type={'checkbox'} checked={item.checked} onChange={() => handleToggleChecked(item.id)} />
+            <div key={index} className={style.tasks__container_item}>
+              <Input className={style.tasks__container_item_checkbox} type={'checkbox'} checked={item.checked} onChange={() => handleToggleChecked(item.id)} />
               {editingTask && editingTask.id === item.id ? (
-                <Input type={'text'} newValue={editedTaskText} onChange={(e) => setEditedTaskText(e.target.value)} ref={inputRef} autoFocus />
+                <Input className={style.tasks__container_item_input} type={'text'} newValue={editedTaskText} onChange={(e) => setEditedTaskText(e.target.value)} ref={inputRef} autoFocus />
               ) : (
                 <span color={'red'}>{item.textTask}</span>
               )}
               {editingTask && editingTask.id === item.id ? (
                 <Check onClick={handleSaveEditedTask} />
               ) : (
-                <>
+                <div className={style.tasks__container_icons}>
                   <SquarePen onClick={() => handleEditTask(item)} />
                   <Trash2 onClick={() => removeTask(item.id)} />
-                </>
+                </div>
               )}
             </div>
           ))}

@@ -1,3 +1,67 @@
 .registration {
-    	font-family: 'Roboto Regular';
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 170px;
+
+  h1 {
+    font-family: 'Roboto Regular';
+    font-size: 50px;
+    font-weight: 600;
+    color: var(--color-white);
+    text-shadow: 0px 0px 5px var(--blue), 0px 0px 10px var(--blue), 0px 0px 10px var(--blue), 0px 0px 20px var(--blue);
+    text-align: center;
+  }
+
+  &__input {
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid var(--blue);
+    font-family: 'Roboto Regular';
+    font-size: 18px;
+    line-height: 21px;
+    box-sizing: border-box;
+    padding: 16px 10px 16px 20px;
+    color: var(--grey);
+
+    &:focus {
+      border: 1px solid var(--blue);
+      box-shadow: 0px 0px 5px var(--blue), 0px 0px 10px var(--blue), 0px 0px 10px var(--blue), 0px 0px 20px var(--blue);
+    }
+  }
+
+  &__button {
+    font-family: 'Roboto Regular';
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid var(--black);
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    &:after {
+      content: '';
+      background-color: var(--blue);
+      width: 100%;
+      z-index: -1;
+      position: absolute;
+      height: 100%;
+      top: 7px;
+      left: 7px;
+      transition: 0.2s;
+    }
+
+    &:hover:after {
+      top: 0px;
+      left: 0px;
+    }
+  }
 }
+
